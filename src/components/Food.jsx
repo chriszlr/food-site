@@ -3,6 +3,26 @@ import { useState } from "react";
 
 function Food() {
   const [foods, setFoods] = useState(data);
+
+  // Filter type bugers/pizza etc
+
+  const filterType = (category) => {
+    setFoods(
+      data.filter((item) => {
+        return item.category === category;
+      })
+    );
+  };
+
+  // filter by price
+  const filterPrice = (price) => {
+    setFoods(
+      data.filter((item) => {
+        return item.price === price;
+      })
+    );
+  };
+
   return (
     <div className="max-w-[1640px] mx-auto px-4 py-12">
       <h1 className="text-orange-600 font-bold text-4xl text-center">
@@ -15,19 +35,34 @@ function Food() {
         <div>
           <p className="font-bold text-gray-700">Filter Type</p>
           <div className="flex justify-between flex-wrap">
-            <button className="border border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white m-1">
+            <button
+              onClick={() => setFoods(data)}
+              className="border border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white m-1"
+            >
               All
             </button>
-            <button className="border border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white m-1">
+            <button
+              onClick={() => filterType("burger")}
+              className="border border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white m-1"
+            >
               Burgers
             </button>
-            <button className="border border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white m-1">
+            <button
+              onClick={() => filterType("pizza")}
+              className="border border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white m-1"
+            >
               Pizza
             </button>
-            <button className="border border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white m-1">
+            <button
+              onClick={() => filterType("salad")}
+              className="border border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white m-1"
+            >
               Salad
             </button>
-            <button className="border border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white m-1">
+            <button
+              onClick={() => filterType("chicken")}
+              className="border border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white m-1"
+            >
               Chicken
             </button>
           </div>
@@ -37,16 +72,28 @@ function Food() {
         <div>
           <p className="font-bold text-gray-700">Filter price</p>
           <div className="flex justify-between max-w-[390px] w-full">
-            <button className="border border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white m-1">
+            <button
+              onClick={() => filterPrice("$")}
+              className="border border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white m-1"
+            >
               $
             </button>
-            <button className="border border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white m-1">
+            <button
+              onClick={() => filterPrice("$$")}
+              className="border border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white m-1"
+            >
               $$
             </button>
-            <button className="border border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white m-1">
+            <button
+              onClick={() => filterPrice("$$$")}
+              className="border border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white m-1"
+            >
               $$$
             </button>
-            <button className="border border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white m-1">
+            <button
+              onClick={() => filterPrice("$$$$")}
+              className="border border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white m-1"
+            >
               $$$$
             </button>
           </div>
